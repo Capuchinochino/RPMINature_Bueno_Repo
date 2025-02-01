@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/NatureRPMI_Root/Scenes/FerScene.unity
+    path: Assets/NatureRPMI_Root/Scenes/Level2.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/NatureRPMI_Root/Scenes/MainMenu.unity
+    guid: 3d0e1938f2ab62d49bdf064948326977
   m_configObjects: {}
