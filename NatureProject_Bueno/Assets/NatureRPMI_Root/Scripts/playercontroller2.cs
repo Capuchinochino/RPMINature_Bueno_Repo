@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck; // Añadir este campo
     public float groundCheckDistance = 0.2f; // Distancia del raycast
     public LayerMask groundLayer; // Capa del suelo
-
+    private bool isFacingLeft = true;
     private bool isGrounded;
 
     void Start()
@@ -81,6 +81,11 @@ public class PlayerController : MonoBehaviour
         }
     }
       
-        
+        void flip()
+
+    {
+
+    }
+
 
     }
