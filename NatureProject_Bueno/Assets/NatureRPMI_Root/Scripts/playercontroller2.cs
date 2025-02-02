@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     private bool isFacingLeft = true;
     private bool isGrounded;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
