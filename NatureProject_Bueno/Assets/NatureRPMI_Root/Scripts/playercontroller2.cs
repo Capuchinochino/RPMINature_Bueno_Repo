@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     private bool isFacingLeft = true;
     private bool isGrounded;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +27,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Attack();
         }
 
         Move();
@@ -75,8 +79,14 @@ public class PlayerController : MonoBehaviour
     {
         isFacingLeft = !isFacingLeft;
         Vector3 scale = transform.localScale;
-        scale.x *= -1; // Invierte la escala en el eje X
+        scale.x *= -1;
         transform.localScale = scale;
+    }
+
+    private void Attack()
+    {
+        Debug.Log("El ataque se ha ejecutado");
+        animator.SetTrigger("Attack");
     }
 
     private void OnDrawGizmos()
