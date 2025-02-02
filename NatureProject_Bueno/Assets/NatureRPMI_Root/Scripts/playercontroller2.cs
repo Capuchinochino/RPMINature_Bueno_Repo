@@ -9,9 +9,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    public Transform groundCheck; // Añadir este campo
-    public float groundCheckDistance = 0.2f; // Distancia del raycast
-    public LayerMask groundLayer; // Capa del suelo
+    public Transform groundCheck;
+    public float groundCheckDistance = 0.2f;
+    public LayerMask groundLayer;
     private bool isFacingLeft = true;
     private bool isGrounded;
 
@@ -23,55 +23,45 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
 
-       
-
-            // Verificar si está tocando el suelo
-            isGrounded = Physics2D.Raycast(groundCheck.position, Vector2.down, groundCheckDistance, groundLayer);
-
-        // Salto
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             Jump();
-           
         }
 
-       
-    
-
-    Move();
-    
+        Move();
         UpdateAnimator();
-
-          
-
-            }
+    }
 
     private void Move()
     {
         float moveInput = Input.GetAxis("Horizontal");
+
         Vector3 move = new Vector3(moveInput, 0, 0) * moveSpeed * Time.deltaTime;
         transform.Translate(move);
 
-        // Usar el GroundCheck para verificar si está en el suelo
-        isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundCheckDistance, groundLayer);
+        if (moveInput > 0 && isFacingLeft)
+        {
+            Flip();
+        }
+        else if (moveInput < 0 && !isFacingLeft)
+        {
+            Flip();
+        }
     }
-     
+
     private void Jump()
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
         }
     }
 
-
-
-    private void UpdateAnimator() 
+    private void UpdateAnimator()
     {
-        
-
         float moveInput = Input.GetAxis("Horizontal");
         animator.SetBool("isRunning", moveInput != 0);
 
@@ -80,12 +70,18 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isJumping", false);
         }
     }
-      
-        void flip()
 
+    private void Flip()
     {
-
+        isFacingLeft = !isFacingLeft;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1; // Invierte la escala en el eje X
+        transform.localScale = scale;
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
     }
+}
