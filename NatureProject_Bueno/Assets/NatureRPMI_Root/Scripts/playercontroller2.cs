@@ -63,12 +63,15 @@ public class PlayerController : MonoBehaviour
     private void UpdateAnimator()
     {
         float moveInput = Input.GetAxis("Horizontal");
+
         animator.SetBool("isRunning", moveInput != 0);
 
         if (isGrounded && animator.GetBool("isJumping"))
         {
             animator.SetBool("isJumping", false);
         }
+
+        if (Input.GetKeyDown(KeyCode.F)) { animator.SetTrigger("Attack"); }
     }
 
     private void Flip()
