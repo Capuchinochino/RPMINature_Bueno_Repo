@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
-    public GameObject pausePanel; 
+    public GameObject PanelPause; 
     public Button continueButton;
     public Button resetButton;
     public Button menuButton;
@@ -13,7 +13,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
-        pausePanel.SetActive(false); 
+        PanelPause.SetActive(false); 
 
         continueButton.onClick.AddListener(ContinueGame);
         resetButton.onClick.AddListener(ResetLevel);
@@ -40,14 +40,14 @@ public class PauseManager : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0f;
-        pausePanel.SetActive(true); 
+        PanelPause.SetActive(true); 
     }
 
     void ContinueGame()
     {
         isPaused = false;
         Time.timeScale = 1f;
-        pausePanel.SetActive(false); 
+        PanelPause.SetActive(false); 
     }
 
     void ResetLevel()
