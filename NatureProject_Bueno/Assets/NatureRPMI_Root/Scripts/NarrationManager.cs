@@ -15,7 +15,7 @@ public class NarrationManager : MonoBehaviour
 
     void Start()
     {
-        narrationPanel.SetActive(false);  // Ocultar el panel al inicio
+        narrationPanel.SetActive(false);  
     }
 
     public void StartNarration()

@@ -1,72 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &357262527389123388
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2078509218337408513}
-  - component: {fileID: 6326592270179882103}
-  m_Layer: 6
-  m_Name: HItBox
-  m_TagString: Enemy
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2078509218337408513
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357262527389123388}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0433, y: -0.0465, z: -0.00016770596}
-  m_LocalScale: {x: 0.10901319, y: 0.114204295, z: 0.20985039}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5665679332273894802}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &6326592270179882103
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 357262527389123388}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.14272296, y: 0.46594882}
-  m_Size: {x: 1.3395474, y: 2.4057727}
-  m_Direction: 0
 --- !u!1 &4961274545776223085
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7108782615943679271}
-  - component: {fileID: 6494904898317695362}
-  m_Layer: 6
-  m_Name: Attackbox
+  - component: {fileID: 1429034242401730842}
+  m_Layer: 0
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,21 +26,19 @@ Transform:
   m_GameObject: {fileID: 4961274545776223085}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0589, y: -0.0465, z: -0.00016770596}
+  m_LocalPosition: {x: -0.0433, y: -0.0465, z: -0.00016770596}
   m_LocalScale: {x: 0.10901319, y: 0.114204295, z: 0.20985039}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5665679332273894802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &6494904898317695362
-CapsuleCollider2D:
+--- !u!136 &1429034242401730842
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4961274545776223085}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -116,24 +47,14 @@ CapsuleCollider2D:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15111828, y: -0.0041975975}
-  m_Size: {x: 1.305965, y: 1.4785419}
-  m_Direction: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.60845816
+  m_Height: 1.9801412
+  m_Direction: 1
+  m_Center: {x: 0.19683158, y: 0.12854314, z: 0}
 --- !u!1 &4966498054384641002
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,9 +67,9 @@ GameObject:
   - component: {fileID: 856891799112955048}
   - component: {fileID: 7724372645670099631}
   - component: {fileID: 4679404106173111935}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SetaMala
-  m_TagString: Enemy
+  m_TagString: SetaMala
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,7 +88,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7108782615943679271}
-  - {fileID: 2078509218337408513}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &856891799112955048
@@ -255,14 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c2889fd8ac19504d8e6d7283c91364a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4854747230514082457, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
+  player: {fileID: 0}
+  projectilePrefab: {fileID: 0}
   speed: 3
   detectionRange: 5
-  npcHealth: 1
-  damageAmount: 1
-  patrolPointA: {fileID: 8809416470553195480, guid: 5f55a5dd0447a234e845b509dd9e43a5, type: 3}
-  patrolPointB: {fileID: 7930533315959975121, guid: 9f4a9176b2bc3fb4fb2bfa257cab967a, type: 3}
+  attackCooldown: 2
+  patrolPointA: {fileID: 0}
+  patrolPointB: {fileID: 0}
   currentPatrolPoint: {fileID: 0}
-  Player:
-    serializedVersion: 2
-    m_Bits: 128

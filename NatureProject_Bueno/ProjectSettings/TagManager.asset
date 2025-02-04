@@ -8,8 +8,6 @@ TagManager:
   - SetaMala
   - GroundLayer
   - GroundCheck
-  - Enemy
-  - PlayerAttack
   layers:
   - Default
   - TransparentFX
@@ -17,8 +15,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Enemy
-  - Player
+  - 
+  - 
   - 
   - 
   - 

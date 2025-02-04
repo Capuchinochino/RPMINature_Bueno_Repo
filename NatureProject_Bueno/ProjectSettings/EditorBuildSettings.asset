@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/NatureRPMI_Root/Scenes/FinalBoss.unity
     guid: 1e26eb397e5166d478e6d9a4df614a3e
-  - enabled: 1
-    path: Assets/NatureRPMI_Root/Scenes/LevelSelector.unity
-    guid: 12bb4092c8983ae4bbc2f5b45198fbce
   m_configObjects: {}

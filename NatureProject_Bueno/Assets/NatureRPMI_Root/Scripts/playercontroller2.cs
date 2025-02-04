@@ -9,22 +9,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    public GameObject npc;
-
     public Transform groundCheck;
     public float groundCheckDistance = 0.2f;
     public LayerMask groundLayer;
     private bool isFacingLeft = true;
     private bool isGrounded;
 
-    public int playerHealth = 3;
-    public GameObject attackCollider;
-
-    public LayerMask enemyLayer;
-
-
     void Start()
-    {   
+    {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
@@ -40,18 +32,14 @@ public class PlayerController : MonoBehaviour
 
         Move();
         UpdateAnimator();
-
-        if (Input.GetKeyDown(KeyCode.F)) 
-        {
-            Attack();
-        }
     }
 
     private void Move()
     {
         float moveInput = Input.GetAxis("Horizontal");
 
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        Vector3 move = new Vector3(moveInput, 0, 0) * moveSpeed * Time.deltaTime;
+        transform.Translate(move);
 
         if (moveInput > 0 && isFacingLeft)
         {
@@ -67,7 +55,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             animator.SetBool("isJumping", true);
         }
@@ -83,51 +70,16 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isJumping", false);
         }
-    }   
+
+        if (Input.GetKeyDown(KeyCode.F)) { animator.SetTrigger("Attack"); }
+    }
 
     private void Flip()
     {
-        if (rb.velocity.x > 0 && isFacingLeft || rb.velocity.x < 0 && !isFacingLeft) 
-        {
-            isFacingLeft = !isFacingLeft;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1; // Invierte la escala en el eje X
-            transform.localScale = scale;
-        }
-    }
-        
-    private void Attack() 
-    {
-        animator.SetTrigger("Attack");
-
-        if ( npc != null && npc.gameObject.activeInHierarchy) 
-        {
-            attackCollider.SetActive(true);
-        }
-        StartCoroutine(DeactivateAttackCollider());
-    }
-
-    private IEnumerator DeactivateAttackCollider() 
-    {
-        yield return new WaitForSeconds(1.5f);
-        attackCollider.SetActive(false);
-    }
-
-    public void TakeDamage(int damage) 
-    {
-        playerHealth -= damage;
-
-        if (playerHealth <= 0) 
-        {
-            Die();
-        }
-    }
-    private void Die() 
-    {
-        Debug.Log("El Jugador a muerto");
-        animator.SetTrigger("Die");
-        rb.velocity = Vector2.zero;
-        //gameObject.SetActive(false);
+        isFacingLeft = !isFacingLeft;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1; // Invierte la escala en el eje X
+        transform.localScale = scale;
     }
 
     private void OnDrawGizmos()
