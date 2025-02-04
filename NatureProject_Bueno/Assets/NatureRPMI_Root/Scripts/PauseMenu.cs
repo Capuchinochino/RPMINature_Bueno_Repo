@@ -20,26 +20,26 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pauseUI.SetActive(true);
-        Time.timeScale = 0f; // Pausar el juego
+        Time.timeScale = 0; // Pausar el juego
         isPaused = true;
     }
 
     public void ResumeGame()
     {
         pauseUI.SetActive(false);
-        Time.timeScale = 1f; // Reanudar el juego
+        Time.timeScale = 1; // Reanudar el juego
         isPaused = false;
     }
 
     public void RestartLevel()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1; 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 
