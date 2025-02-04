@@ -1,86 +1,141 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 
 public class NPCController : MonoBehaviour
 {
-    public Transform player;            // Referencia al jugador
-    public GameObject projectilePrefab; // Prefabricado del proyectil
-    public float speed = 3f;            // Velocidad de persecución
-    public float detectionRange = 5f;   // Distancia a la que el NPC detecta al jugador
-    public float attackCooldown = 2f;   // Tiempo de espera entre disparos
-    private float attackTimer = 0f;     // Temporizador para el disparo
+    public Transform player;
+    public float speed = 3f;
+    public float detectionRange = 5f;
+    public int npcHealth = 1;
+    public float damageAmount = 1f;
+
+
+
     public Transform patrolPointA;
     public Transform patrolPointB;
     public Transform currentPatrolPoint;
-    private bool isChasing = false;
 
-    void Start() { currentPatrolPoint = patrolPointA; }
+    public LayerMask Player; // Asegúrate de asignar la capa Enemy en Unity.
+
+
+    private bool isChasing = false;
+    private bool isFacingRight = false;
+
+    private Vector2 lastPosition;
+
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        currentPatrolPoint = patrolPointA;
+        lastPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {
-        //MoveTowardsPlayer();
-
-        // Verifica la distancia al jugador
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        bool isPlayerInPatrolZone = IsPlayerWithinPatrolZone();
 
-
-        if (distanceToPlayer <= detectionRange) { isChasing = true; } else { isChasing = false; }
-        if (isChasing) { MoveTowardsPlayer(); } else { Patrol();}
-
-
-        // Si el jugador está dentro del rango de detección
-        if (distanceToPlayer <= detectionRange)
+        if (distanceToPlayer <= detectionRange && isPlayerInPatrolZone)
         {
-            // Si el NPC está listo para disparar (basado en el cooldown)
-            if (attackTimer <= 0f)
+            isChasing = true;
+        }
+        else
+        {
+            isChasing = false;
+        }
+
+        if (isChasing)
+        {
+            MoveTowards(player.position);
+        }
+        else
+        {
+            MoveTowards(currentPatrolPoint.position);
+
+            if (Vector2.Distance(transform.position, currentPatrolPoint.position) < 0.2f)
             {
-                ShootProjectile();
-                attackTimer = attackCooldown; // Reiniciar el temporizador de disparo
+                currentPatrolPoint = (currentPatrolPoint == patrolPointA) ? patrolPointB : patrolPointA;
+                Flip();
+            }
+        }
+    }
+
+    private void MoveTowards(Vector2 target)
+    {
+        transform.position = Vector2.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        if (target.x != lastPosition.x)
+        {
+            if ((target.x > transform.position.x && !isFacingRight) || (target.x < transform.position.x && isFacingRight))
+            {
+                Flip();
+            }
+        }
+        lastPosition = transform.position;
+    }
+    private void Flip()
+    {
+        isFacingRight = !isFacingRight;
+        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+    private bool IsPlayerWithinPatrolZone()
+    {
+        float minX = Mathf.Min(patrolPointA.position.x, patrolPointB.position.x);
+        float maxX = Mathf.Max(patrolPointA.position.x, patrolPointB.position.x);
+
+        return player.position.x >= minX && player.position.x <= maxX;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        npcHealth -= damage;
+        if (npcHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(1);
+                Debug.Log("DAño al player");
             }
         }
 
-        // Decrementar el temporizador de disparo
-        if (attackTimer > 0f)
+        if (other.CompareTag("PlayerAttack")) 
         {
-            attackTimer -= Time.deltaTime;
+            TakeDamage(1);
+            Debug.Log("DAño al npc");
         }
-
-
-
-    }
-    private void MoveTowardsPlayer() 
-    {
-        Vector2 direction = (player.position - transform.position).normalized;
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
 
-    private void Patrol()
+    public void Attack()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currentPatrolPoint.position, speed * Time.deltaTime);
-        if (Vector2.Distance(transform.position, currentPatrolPoint.position) < 0.1f) 
-        {
-            if (currentPatrolPoint == patrolPointA)
-            {
-                currentPatrolPoint = patrolPointB;
-            }
-            else 
-            {
-                currentPatrolPoint = patrolPointA;
-            }
-        }
-
-
+        rb.isKinematic = true;
+        StartCoroutine(DeactivateAttackCollider());
     }
-
-
-
-    private void ShootProjectile()
+    private IEnumerator DeactivateAttackCollider()
     {
-        // Crear el proyectil y asignarle la dirección del disparo
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        Vector2 direction = (player.position - transform.position).normalized;
-        projectile.GetComponent<Projectile>().SetDirection(direction);
+        yield return new WaitForSeconds(0.5f);
+        rb.isKinematic = false;
     }
 }

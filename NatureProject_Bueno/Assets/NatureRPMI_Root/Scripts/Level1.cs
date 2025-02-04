@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;  // Para cambiar de escena
 public class FinalizarNivel : MonoBehaviour
 {
     
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
       
         if (other.CompareTag("Player"))
