@@ -121,6 +121,12 @@ public class NPCController : MonoBehaviour
             }
         }
 
+        if (other.CompareTag("Enemy")) 
+        {
+            currentPatrolPoint = (currentPatrolPoint == patrolPointA) ? patrolPointB : patrolPointA;
+            Flip();
+        }
+
         if (other.CompareTag("PlayerAttack")) 
         {
             TakeDamage(1);
