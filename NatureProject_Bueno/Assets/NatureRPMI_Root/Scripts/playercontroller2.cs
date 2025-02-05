@@ -22,12 +22,18 @@ public class PlayerController : MonoBehaviour
     public float attackDuration = 0.5f;
 
     public LayerMask enemyLayer;
-
+    public GameObject deathPanel;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+
+        if (deathPanel != null)
+        {
+            deathPanel.SetActive(false);
+        }
     }
 
     void Update()
@@ -109,6 +115,7 @@ public class PlayerController : MonoBehaviour
 
         attackObject.SetActive(true);
     }
+
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
@@ -118,12 +125,18 @@ public class PlayerController : MonoBehaviour
             Die();
         }
     }
+
     private void Die()
     {
         Debug.Log("El Jugador ha muerto");
         animator.SetTrigger("Die");
         rb.velocity = Vector2.zero;
-        //gameObject.SetActive(false);
+
+        if (deathPanel != null)
+        {
+            deathPanel.SetActive(true);
+        }
+
     }
 
     private void OnDrawGizmos()
