@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         playerHealth -= damage;
+        Debug.Log("Agh");
 
         if (playerHealth <= 0)
         {
@@ -130,12 +131,12 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("El Jugador ha muerto");
+        // Debug.Log("El Jugador ha muerto");
         animator.SetTrigger("Die");
         rb.velocity = Vector2.zero;
         moveSpeed = 0;
         jumpForce = 0;
-
+        Time.timeScale = 0f;
         if (deathPanel != null)
         {
             deathPanel.SetActive(true);
