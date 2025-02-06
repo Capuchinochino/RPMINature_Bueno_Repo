@@ -56,7 +56,7 @@ public class NPCController : MonoBehaviour
         {
             MoveTowards(currentPatrolPoint.position);
 
-            if (Vector2.Distance(transform.position, currentPatrolPoint.position) < 0.2f)
+            if (Vector2.Distance(transform.position, currentPatrolPoint.position) < 0f)
             {
                 currentPatrolPoint = (currentPatrolPoint == patrolPointA) ? patrolPointB : patrolPointA;
                 Flip();
