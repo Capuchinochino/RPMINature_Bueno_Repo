@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/NatureRPMI_Root/Scenes/Level2.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
     path: Assets/NatureRPMI_Root/Scenes/MainMenu.unity
     guid: 3d0e1938f2ab62d49bdf064948326977
   - enabled: 1
     path: Assets/NatureRPMI_Root/Scenes/Level1.unity
     guid: 9df9e7feec0cafa42ba28b08f83460f5
   - enabled: 1
+    path: Assets/NatureRPMI_Root/Scenes/Level2.unity
+    guid: 3ffad99ef32c3dc43a441bc5375fd6ab
+  - enabled: 1
     path: Assets/NatureRPMI_Root/Scenes/FinalBoss.unity
     guid: 1e26eb397e5166d478e6d9a4df614a3e
+  - enabled: 1
+    path: Assets/NatureRPMI_Root/Scenes/Win.unity
+    guid: 28185780159d77249ad51ed8dbccd93c
   m_configObjects: {}
