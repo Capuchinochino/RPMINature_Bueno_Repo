@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 2945170662011974294}
   - component: {fileID: 6302736991203098411}
   - component: {fileID: 2565468101269749186}
+  - component: {fileID: 8101811095301499902}
   - component: {fileID: 2546343163312629883}
   - component: {fileID: 6658691924510126628}
   - component: {fileID: 4439028171596698338}
@@ -251,6 +252,22 @@ CapsuleCollider2D:
   m_Offset: {x: -0.0127744675, y: 0.031933546}
   m_Size: {x: 1.1405087, y: 1.9105854}
   m_Direction: 0
+--- !u!114 &8101811095301499902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130034062234309056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d196dedc963f034983adba4b5dab68e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 4439028171596698338}
+  emptyHeart: {fileID: 21300000, guid: d7597e7804c0fbe4ea689a48014acfed, type: 3}
+  fullHeart: {fileID: 21300000, guid: 7fce2732c538ea145b29fe890ff6b84c, type: 3}
+  hearts: []
 --- !u!95 &2546343163312629883
 Animator:
   serializedVersion: 5
@@ -364,3 +381,4 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  deathPanel: {fileID: 0}

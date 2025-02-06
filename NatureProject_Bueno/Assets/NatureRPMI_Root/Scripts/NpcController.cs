@@ -18,15 +18,14 @@ public class NPCController : MonoBehaviour
     public Transform patrolPointB;
     public Transform currentPatrolPoint;
 
-    public LayerMask Player; // Asegúrate de asignar la capa Enemy en Unity.
-
-
     private bool isChasing = false;
     private bool isFacingRight = false;
 
     private Vector2 lastPosition;
 
     private Rigidbody2D rb;
+
+    //public bool hasAttacked = false;
 
     void Start()
     {
@@ -117,31 +116,21 @@ public class NPCController : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(1);
-                Debug.Log("DAño al player");
+                //Debug.Log("Daño al player");
             }
         }
+            //hasAttacked = true;
 
-        if (other.CompareTag("Enemy")) 
+        if (other.CompareTag("Enemy"))
         {
             currentPatrolPoint = (currentPatrolPoint == patrolPointA) ? patrolPointB : patrolPointA;
             Flip();
         }
 
-        if (other.CompareTag("PlayerAttack")) 
+        if (other.CompareTag("PlayerAttack"))
         {
             TakeDamage(1);
-            Debug.Log("DAño al npc");
+            //Debug.Log("DAño al npc");
         }
-    }
-
-    public void Attack()
-    {
-        rb.isKinematic = true;
-        StartCoroutine(DeactivateAttackCollider());
-    }
-    private IEnumerator DeactivateAttackCollider()
-    {
-        yield return new WaitForSeconds(0.5f);
-        rb.isKinematic = false;
     }
 }

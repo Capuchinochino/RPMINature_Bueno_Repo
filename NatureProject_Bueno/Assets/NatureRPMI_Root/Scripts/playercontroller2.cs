@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckDistance = 0.2f;
     public LayerMask groundLayer;
+
     private bool isFacingLeft = true;
     private bool isGrounded;
 
@@ -72,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded && Input.GetButtonDown("Jump"))
+        if (isGrounded == true && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
@@ -131,6 +133,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("El Jugador ha muerto");
         animator.SetTrigger("Die");
         rb.velocity = Vector2.zero;
+        moveSpeed = 0;
+        jumpForce = 0;
 
         if (deathPanel != null)
         {
@@ -139,9 +143,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //Gizmos.color = Color.red;
+    //Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
+    //}
 }
