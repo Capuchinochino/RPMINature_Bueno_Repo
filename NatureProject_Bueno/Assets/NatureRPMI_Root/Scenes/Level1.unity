@@ -9796,6 +9796,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LvlFinish
       objectReference: {fileID: 0}
+    - target: {fileID: 9105610696419386209, guid: ab447078780b19440ae3fe0c8c7a72ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
