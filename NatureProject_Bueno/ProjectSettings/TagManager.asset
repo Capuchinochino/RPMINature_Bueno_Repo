@@ -10,6 +10,7 @@ TagManager:
   - GroundCheck
   - Enemy
   - PlayerAttack
+  - Obstacle
   layers:
   - Default
   - TransparentFX
