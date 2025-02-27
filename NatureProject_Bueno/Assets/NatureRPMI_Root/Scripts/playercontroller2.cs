@@ -5,26 +5,36 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 5f;
-    private Rigidbody2D rb;
-    private Animator animator;
+    [Header("Player Stats")]
+    [SerializeField] public float moveSpeed = 5f;
+    [SerializeField] public float jumpForce = 5f;
 
-    public GameObject npc;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
 
+
+    [SerializeField] public GameObject npc;
+
+
+    [Header("Player Movement")]
+    [SerializeField] private bool isFacingLeft = true;
+    private bool isGrounded;
     public Transform groundCheck;
     public float groundCheckDistance = 0.2f;
     public LayerMask groundLayer;
 
-    private bool isFacingLeft = true;
-    private bool isGrounded;
-
+    [Header(" ")]
+    [Header("Player Health")]
     public int playerHealth = 3;
-    public GameObject attackColliderPrefab;
-    public float attackDuration = 0.5f;
-
-    public LayerMask enemyLayer;
+    public bool hastakendamage = false;
     public GameObject deathPanel;
+
+    [Header(" ")]
+    [Header("Player Attack")]
+    [SerializeField] private GameObject attackHitbox;
+    public bool canAttack = true;
+    public float attackDuration = 0.5f;
+    public LayerMask enemyLayer;
 
     void Start()
     {
@@ -107,15 +117,16 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        animator.SetTrigger("Attack");
-
-        Vector3 attackPosition = transform.position + (isFacingLeft ? Vector3.left : Vector3.right) * 1.5f;
-        GameObject attackObject = Instantiate(attackColliderPrefab, attackPosition, Quaternion.identity);
-        attackObject.tag = "PlayerAttack";
-
-        Destroy(attackObject, attackDuration);
-
-        attackObject.SetActive(true);
+        if (canAttack == true) 
+        {
+            //moveSpeed = 0;
+            //jumpForce = 0;
+            animator.SetTrigger("Attack");
+            canAttack = false;
+            StartCoroutine(AttackCooldown());
+            attackHitbox.SetActive(true);
+            StartCoroutine(DisableHitbox());
+        }
     }
 
     public void TakeDamage(int damage)
@@ -133,7 +144,6 @@ public class PlayerController : MonoBehaviour
     {
         // Debug.Log("El Jugador ha muerto");
         animator.SetTrigger("Die");
-        rb.velocity = Vector2.zero;
         moveSpeed = 0;
         jumpForce = 0;
         Time.timeScale = 0f;
@@ -143,10 +153,27 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //Gizmos.color = Color.red;
-    //Gizmos.DrawLine(groundCheck.position, groundCheck.position + Vector3.down * groundCheckDistance);
-    //}
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy") && hastakendamage == false)
+        {
+            {
+                TakeDamage(1);
+                //Debug.Log("Daño al player");
+                hastakendamage = true;
+            }
+        }
+    }
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
+        //jumpForce = 5f;
+        //moveSpeed = 5f;
+    }
+    IEnumerator DisableHitbox()
+    {
+        yield return new WaitForSeconds(0.5f);
+        attackHitbox.SetActive(false);
+    }
 }

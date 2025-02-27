@@ -265,9 +265,6 @@ MonoBehaviour:
   patrolPointA: {fileID: 0}
   patrolPointB: {fileID: 0}
   currentPatrolPoint: {fileID: 0}
-  Player:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!70 &8919415545471510993
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
