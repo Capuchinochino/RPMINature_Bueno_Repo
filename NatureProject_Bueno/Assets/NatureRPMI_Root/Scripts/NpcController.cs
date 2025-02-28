@@ -116,10 +116,8 @@ public class NPCController : MonoBehaviour
             if (player != null)
             {
                 player.TakeDamage(1);
-                //Debug.Log("Daño al player");
             }
         }
-            //hasAttacked = true;
 
         if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
         {
@@ -130,7 +128,6 @@ public class NPCController : MonoBehaviour
         if (other.CompareTag("PlayerAttack"))
         {
             TakeDamage(1);
-            //Debug.Log("DAño al npc");
         }
     }
 }

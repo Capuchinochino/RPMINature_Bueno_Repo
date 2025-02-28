@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
             canAttack = false;
             StartCoroutine(AttackCooldown());
-            attackHitbox.SetActive(true);
+            //attackHitbox.SetActive(true);
             StartCoroutine(DisableHitbox());
         }
     }
