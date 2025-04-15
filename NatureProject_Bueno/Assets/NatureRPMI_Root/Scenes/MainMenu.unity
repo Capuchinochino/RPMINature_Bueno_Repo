@@ -280,8 +280,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1995224890}
-        m_TargetAssemblyTypeName: NewLevelManager, Assembly-CSharp
+      - m_Target: {fileID: 1995224888}
+        m_TargetAssemblyTypeName: PantallaTitulo, Assembly-CSharp
         m_MethodName: SalirJuego
         m_Mode: 1
         m_Arguments:
@@ -1496,9 +1496,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1995224890}
-        m_TargetAssemblyTypeName: NewLevelManager, Assembly-CSharp
-        m_MethodName: IniciarJuego
+      - m_Target: {fileID: 479321816}
+        m_TargetAssemblyTypeName: NarrationManager, Assembly-CSharp
+        m_MethodName: StartNarration
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1663,7 +1663,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1995224889}
   - component: {fileID: 1995224888}
-  - component: {fileID: 1995224890}
   m_Layer: 0
   m_Name: ScriptMenu
   m_TagString: Untagged
@@ -1698,18 +1697,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1995224890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995224887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17e7f34427aebde44b59cac61628b69e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2042928393
 GameObject:
   m_ObjectHideFlags: 0

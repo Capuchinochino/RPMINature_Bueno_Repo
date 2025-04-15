@@ -15,15 +15,4 @@ public class NewLevelManager : MonoBehaviour
             SceneManager.LoadScene(currentSceneIndex + 1);
         }
     }
-    public void IniciarJuego()
-    {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
-    }
-
-    public void SalirJuego()
-    {
-        Application.Quit();
-        Debug.Log("Salir del juego");
-    }
 }
