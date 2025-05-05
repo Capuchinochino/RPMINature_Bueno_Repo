@@ -25,7 +25,6 @@ public class NPCController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-
     void Start()
     {
         currentPatrolPoint = patrolPointA;
@@ -104,6 +103,7 @@ public class NPCController : MonoBehaviour
         if (gameObject.activeInHierarchy)
         {
             gameObject.SetActive(false);
+           // GameObject.FindObjectOfType<NewLevelManager>().EnemigoEliminado();
         }
     }
 

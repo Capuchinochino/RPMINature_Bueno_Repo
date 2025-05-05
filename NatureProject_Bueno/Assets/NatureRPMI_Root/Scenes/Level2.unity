@@ -354,6 +354,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4854747230514082457, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
   m_PrefabInstance: {fileID: 34146788}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &91360407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 100.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.022846507
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1895952812314178644, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204542308397196730, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817137815383158957, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_Name
+      value: meta
+      objectReference: {fileID: 0}
+    - target: {fileID: 7817137815383158957, guid: bef4db3a94aa97742820054b910a311f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bef4db3a94aa97742820054b910a311f, type: 3}
 --- !u!1 &164622931
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,6 +8678,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1921312453}
     m_Modifications:
+    - target: {fileID: 357262527389123388, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4679404106173111935, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: player
       value: 
@@ -8625,6 +8694,10 @@ PrefabInstance:
       propertyPath: patrolPointB
       value: 
       objectReference: {fileID: 1754248350}
+    - target: {fileID: 4961274545776223085, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4966498054384641002, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: m_Name
       value: SetaMala (3)
@@ -8946,6 +9019,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1921312453}
     m_Modifications:
+    - target: {fileID: 357262527389123388, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4679404106173111935, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: player
       value: 
@@ -8958,6 +9035,10 @@ PrefabInstance:
       propertyPath: patrolPointB
       value: 
       objectReference: {fileID: 1352465782}
+    - target: {fileID: 4961274545776223085, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4966498054384641002, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: m_Name
       value: SetaMala (2)
@@ -11766,3 +11847,4 @@ SceneRoots:
   - {fileID: 2118401370}
   - {fileID: 1921312453}
   - {fileID: 1792582596}
+  - {fileID: 91360407}

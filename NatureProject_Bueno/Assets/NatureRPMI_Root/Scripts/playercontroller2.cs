@@ -184,4 +184,8 @@ public class PlayerController : MonoBehaviour
     //yield return new WaitForSeconds(0.5f);
     //attackHitbox.SetActive(false);
     //}
+
+    //WinCondition ==
+    //Lvl == 
+    // WIN bool == true -> next level
 }
