@@ -7863,6 +7863,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1580610711712959829, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4439028171596698338, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
       propertyPath: deathPanel
       value: 
@@ -7927,13 +7931,21 @@ PrefabInstance:
       propertyPath: hearts.Array.data[2]
       value: 
       objectReference: {fileID: 1123653596}
+    - target: {fileID: 8682967102629594768, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963926629515259772, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 9130034062234309056, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
       propertyPath: m_Name
       value: player
       objectReference: {fileID: 0}
     - target: {fileID: 9130034062234309056, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9130034062234309056, guid: 2d41d6ae427d7e548b439ebb443063b1, type: 3}
       propertyPath: m_TagString

@@ -31,7 +31,10 @@ public class PlayerController : MonoBehaviour
 
     [Header(" ")]
     [Header("Player Attack")]
-    [SerializeField] private GameObject attackHitbox;
+    //[SerializeField] private GameObject attackHitbox;
+
+    [SerializeField] private AtaqueCaC ataqueCaC;
+
     public bool canAttack = true;
     public float attackDuration = 0.5f;
     public LayerMask enemyLayer;
@@ -119,13 +122,11 @@ public class PlayerController : MonoBehaviour
     {
         if (canAttack == true) 
         {
-            //moveSpeed = 0;
-            //jumpForce = 0;
             animator.SetTrigger("Attack");
+            ataqueCaC.Golpe();
             canAttack = false;
             StartCoroutine(AttackCooldown());
-            //attackHitbox.SetActive(true);
-            StartCoroutine(DisableHitbox());
+            //StartCoroutine(DisableHitbox());
         }
     }
 
@@ -157,13 +158,20 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Enemy") && hastakendamage == false)
         {
-            {
-                TakeDamage(1);
-                //Debug.Log("Daño al player");
-                hastakendamage = true;
-            }
+            TakeDamage(1);
+            //Debug.Log("Daño al player");
+            hastakendamage = true;
+            StartCoroutine(DamageCooldown());
         }
     }
+
+    private IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(2f); // 2 segundos de inmunidad
+        hastakendamage = false;
+    }
+
+
     IEnumerator AttackCooldown()
     {
         yield return new WaitForSeconds(1f);
@@ -171,9 +179,9 @@ public class PlayerController : MonoBehaviour
         //jumpForce = 5f;
         //moveSpeed = 5f;
     }
-    IEnumerator DisableHitbox()
-    {
-        yield return new WaitForSeconds(0.5f);
-        attackHitbox.SetActive(false);
-    }
+    //IEnumerator DisableHitbox()
+    //{
+    //yield return new WaitForSeconds(0.5f);
+    //attackHitbox.SetActive(false);
+    //}
 }

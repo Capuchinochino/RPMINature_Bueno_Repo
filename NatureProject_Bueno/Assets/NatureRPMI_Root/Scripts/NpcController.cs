@@ -25,7 +25,6 @@ public class NPCController : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    //public bool hasAttacked = false;
 
     void Start()
     {
@@ -110,24 +109,10 @@ public class NPCController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            PlayerController player = other.GetComponent<PlayerController>();
-            if (player != null)
-            {
-                player.TakeDamage(1);
-            }
-        }
-
         if (other.CompareTag("Enemy") || other.CompareTag("Obstacle"))
         {
             currentPatrolPoint = (currentPatrolPoint == patrolPointA) ? patrolPointB : patrolPointA;
             Flip();
-        }
-
-        if (other.CompareTag("PlayerAttack"))
-        {
-            TakeDamage(1);
         }
     }
 }

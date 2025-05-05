@@ -26,35 +26,35 @@ public class NarrationManager : MonoBehaviour
 
     IEnumerator TypeText()
     {
-        isTyping = true;
-        narrationText.text = "";  // Vaciar el texto antes de escribir
+            isTyping = true;
+            narrationText.text = "";  // Vaciar el texto antes de escribir
 
-        foreach (char letter in storyLines[currentLine].ToCharArray())
+            foreach (char letter in storyLines[currentLine].ToCharArray())
+            {
+                narrationText.text += letter;  
+                yield return new WaitForSeconds(textSpeed);  
+            }
+
+            isTyping = false;
+            yield return new WaitForSeconds(2f);  
+            NextLine();  
+
+        void NextLine()
         {
-            narrationText.text += letter;  
-            yield return new WaitForSeconds(textSpeed);  
+            if (currentLine < storyLines.Length - 1)
+            {
+                currentLine++; 
+                StartCoroutine(TypeText()); 
+            }
+            else
+            {
+                StartGame();  
+            }
         }
 
-        isTyping = false;
-        yield return new WaitForSeconds(2f);  
-        NextLine();  
-
-    void NextLine()
-    {
-        if (currentLine < storyLines.Length - 1)
+        void StartGame()
         {
-            currentLine++; 
-            StartCoroutine(TypeText()); 
+            SceneManager.LoadScene("Level1"); 
         }
-        else
-        {
-            StartGame();  
-        }
-    }
-
-    void StartGame()
-    {
-        SceneManager.LoadScene("Level1"); 
-    }
     }
 }

@@ -11443,6 +11443,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1921312453}
     m_Modifications:
+    - target: {fileID: 357262527389123388, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4679404106173111935, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: player
       value: 
@@ -11455,6 +11459,10 @@ PrefabInstance:
       propertyPath: patrolPointB
       value: 
       objectReference: {fileID: 1945719987}
+    - target: {fileID: 4961274545776223085, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4966498054384641002, guid: 81544f90c400b4949bec78ab0476348e, type: 3}
       propertyPath: m_Name
       value: SetaMala (1)
